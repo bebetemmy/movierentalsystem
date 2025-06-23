@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Movie Rental System Learning</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    section {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .week {
+      border-left: 5px solid #007bff;
+      padding-left: 10px;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      margin-top: 10px;
+    }
+    .reveal {
+      background: #f1f1f1;
+      padding: 10px;
+      margin-top: 10px;
+      display: none;
+      white-space: pre-wrap;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function revealAnswer(id) {
+      const el = document.getElementById(id);
+      el.style.display = 'block';
+    }
+  </script>
+</head>
+<body>
+  <h1>Python Movie Rental System Learning</h1>
+  <p>Welcome to the 4-week course to help you build a movie rental system using Python. Follow each week step-by-step with theory, activities, and coding exercises.</p>
+
+  <section class="week">
+    <h2>Week 1: Python Basics & User Interaction</h2>
+    <h3>Key Concepts</h3>
+    <ul>
+      <li>Variables (e.g., <code>movie_a_rented = False</code>)</li>
+      <li>Data types (strings, booleans)</li>
+      <li><code>input()</code> and <code>print()</code> functions</li>
+      <li>String methods (e.g., <code>.strip()</code>)</li>
+    </ul>
+    <h3>Exercise 1</h3>
+    <p>Write a script that asks for the user's name and prints a greeting.</p>
+    <textarea placeholder="Write your code here..."></textarea>
+    <button onclick="revealAnswer('ans1')">Reveal Answer</button>
+    <div id="ans1" class="reveal">name = input("Enter your name: ")
+print(f"Hello {name}!")</div>
+
+    <h3>Exercise 2</h3>
+    <p>Ask for age and display a movie eligibility message.</p>
+    <textarea placeholder="Write your code here..."></textarea>
+    <button onclick="revealAnswer('ans2')">Reveal Answer</button>
+    <div id="ans2" class="reveal">age = int(input("Enter your age: "))
+if age >= 18:
+    print("You can rent any movie.")
+else:
+    print("Some movies may be restricted.")</div>
+  </section>
+
+  <section class="week">
+    <h2>Week 2: Control Flow and Menu Systems</h2>
+    <h3>Key Concepts</h3>
+    <ul>
+      <li><code>while</code> loops</li>
+      <li><code>if / elif / else</code></li>
+      <li>Menu-driven logic</li>
+      <li>String comparison</li>
+    </ul>
+    <h3>Exercise</h3>
+    <p>Write a menu-driven program that says hello or exits based on user choice.</p>
+    <textarea placeholder="Write your code here..."></textarea>
+    <button onclick="revealAnswer('ans3')">Reveal Answer</button>
+    <div id="ans3" class="reveal">while True:
+    print("1. Say Hello\n2. Exit")
+    choice = input("Choose an option: ")
+    if choice == '1':
+        print("Hello there!")
+    elif choice == '2':
+        break
+    else:
+        print("Invalid option.")</div>
+  </section>
+
+  <section class="week">
+    <h2>Week 3: Data Structures & Modularity</h2>
+    <h3>Key Concepts</h3>
+    <ul>
+      <li>Dictionaries, lists</li>
+      <li>Functions and modular code</li>
+      <li>DRY (Don't Repeat Yourself) principle</li>
+    </ul>
+    <h3>Exercise</h3>
+    <p>Display available movies using a function.</p>
+    <textarea placeholder="Write your code here..."></textarea>
+    <button onclick="revealAnswer('ans4')">Reveal Answer</button>
+    <div id="ans4" class="reveal">movies = {"Movie A": False, "Movie B": False}
+
+def show_available():
+    for movie, rented in movies.items():
+        if not rented:
+            print(movie)
+
+show_available()</div>
+  </section>
+
+  <section class="week">
+    <h2>Week 4: Build the Full Movie Rental System</h2>
+    <h3>Final Project</h3>
+    <p>Write a complete movie rental system with menus, rent/return logic, and exit confirmation.</p>
+    <textarea placeholder="Write your full project code here..."></textarea>
+    <button onclick="revealAnswer('ans5')">Reveal Full System</button>
+    <div id="ans5" class="reveal"># Initialize the availability of the movies
+movie_a_rented = False
+movie_b_rented = False
+movie_c_rented = False
+
+while True:
+    print("\n--- Simple Movie Rental System ---")
+    print("1. View Available Movies")
+    print("2. Rent a Movie")
+    print("3. Return a Movie")
+    print("4. Exit")
+    print("----------------------------------")
+    choice = input("Enter your choice (1-4): ")
+
+    if choice == '1':
+        print("\nAvailable Movies:")
+        available = False
+        if not movie_a_rented:
+            print("- Movie A")
+            available = True
+        if not movie_b_rented:
+            print("- Movie B")
+            available = True
+        if not movie_c_rented:
+            print("- Movie C")
+            available = True
+        if not available:
+            print("No movies available.")
+
+    elif choice == '2':
+        movie_name = input("Enter the name of the movie you want to rent: ").strip()
+        if movie_name == "Movie A" and not movie_a_rented:
+            movie_a_rented = True
+            print(f"You have rented '{movie_name}'.")
+        elif movie_name == "Movie B" and not movie_b_rented:
+            movie_b_rented = True
+            print(f"You have rented '{movie_name}'.")
+        elif movie_name == "Movie C" and not movie_c_rented:
+            movie_c_rented = True
+            print(f"You have rented '{movie_name}'.")
+        else:
+            print(f"'{movie_name}' is not available or already rented.")
+
+    elif choice == '3':
+        movie_name = input("Enter the name of the movie you want to return: ").strip()
+        if movie_name == "Movie A" and movie_a_rented:
+            movie_a_rented = False
+            print(f"You have returned '{movie_name}'.")
+        elif movie_name == "Movie B" and movie_b_rented:
+            movie_b_rented = False
+            print(f"You have returned '{movie_name}'.")
+        elif movie_name == "Movie C" and movie_c_rented:
+            movie_c_rented = False
+            print(f"You have returned '{movie_name}'.")
+        else:
+            print(f"'{movie_name}' was not rented.")
+
+    elif choice == '4':
+        print("Exiting the system. Have a great day!")
+        break
+    else:
+        print("Invalid choice. Please select a valid option.")</div>
+  </section>
+</body>
+</html>
